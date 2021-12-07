@@ -11,10 +11,11 @@ class Question extends Model
 
     //可変項目(保存したい値)
     protected $fillable =
-    ['user_id', 'category_id','post'];
+    ['post'];
 
     public function answers()
     {
         return $this->hasMany(Answer::class);
     }
 }
+/* 'user_id', 'category_id', */

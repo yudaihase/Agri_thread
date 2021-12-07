@@ -24,11 +24,21 @@
             <img class="questions1_image" src="{{ asset('/img/question1.png') }}" alt="トップ画像">
             </a>
             </div>
+        
+        @if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	    @endif
 
         @foreach($questions as $question)
                     <hr>
-                        <p><a href="{{ route('answers.show', $question->id) }}"></a>{{ $question->post }}</p>
-                        <p>{{ $question->created_at }}</p>
+                    <p>記事:{{ $question->post  }}</p>
+                    <p>{{ $question->created_at }}</p>
         @endforeach
 
 

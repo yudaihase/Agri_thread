@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
@@ -18,20 +20,25 @@ class QuestionController extends Controller
 
     public function create()
     {
-        return view('questions.create');
+        return view('questions.index');
     }
 
     
     public function store(Request $request)
     {
 
-        $inputs = $request->all();
+         $request->all();
+
+         $request->validate(
+             ['post' => 'required'], 
+             ['post.required' => 'テキストが未入力です']);
 
         //投稿を登録
-        Question::create($inputs);
+        Question::create($request);
 
         //
-        return redirect('questions/create');
+        return redirect(route('index'));
+
 
     }
 }
