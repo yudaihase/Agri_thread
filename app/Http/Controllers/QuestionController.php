@@ -27,14 +27,14 @@ class QuestionController extends Controller
     public function store(Request $request)
     {
 
-         $request->all();
+        $inputs = $request->all();
 
          $request->validate(
              ['post' => 'required'], 
              ['post.required' => 'テキストが未入力です']);
 
         //投稿を登録
-        Question::create($request);
+        Question::create($inputs);
 
         //
         return redirect(route('index'));
