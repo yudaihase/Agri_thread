@@ -37,8 +37,9 @@
 
         @foreach($questions as $question)
                     <hr>
-                    <p>記事:{{ $question->post  }}</p>
+                    <p><a href="{{ route('answers.show', $question->id) }}">{{ $question->post }}</a></p>
                     <p>{{ $question->created_at }}</p>
+                    <p></p>
         @endforeach
 
 

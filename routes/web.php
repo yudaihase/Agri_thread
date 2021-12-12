@@ -17,17 +17,18 @@ Route::get('/', function () {
     return view('top');
 });
 
-Route::get('/questions/index', "QuestionController@index")->name('index');
+Route::get('/questions/index', "QuestionController@index");
+
+Route::post('/questions/create', "QuestionController@create");
 
 /* Route::resource(‘URL’, ‘コントローラー名’, [‘only’ =>[‘メソッド名’, ‘メソッド名’]]); */
 Route::resource('questions', 'QuestionController',['only'=>[
     'index',
     'create',
     'store',
-    'show'
     ]]);
 
-Route::resource('answers', 'AnswerController',['only'=>[
+Route::resource('/questions/answers', 'AnswerController',['only'=>[
     'index',
     'create',
     'store',

@@ -4,20 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Answer extends Model
 {
     //テーブル名を決める
-    protected $table = 'questions';
+    protected $table = 'answers';
+    protected $primaryKey = 'id';
 
     //可変項目(保存したい値)
     /* protected $fillable =
     ['user_id','category_id','post','created_at']; */
 
-    protected $fillable = ['post'];
+    protected $fillable = ['question_id','answer'];
 
-    public function answers()
+    public function questions()
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsTo(Question::class);
     }
 }
-/* 'user_id', 'category_id', */
