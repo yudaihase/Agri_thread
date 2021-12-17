@@ -15,9 +15,16 @@ class Question extends Model
 
     protected $fillable = ['post'];
 
+
     public function answers()
     {
         return $this->hasMany(Answer::class);
+    }
+
+    public function questions_categories()
+    {
+        // 投稿は1つのカテゴリーに属する
+        return $this->belongsTo('App\Models\QuestionsCategory');
     }
 }
 /* 'user_id', 'category_id', */

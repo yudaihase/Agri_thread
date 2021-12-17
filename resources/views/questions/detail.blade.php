@@ -9,6 +9,8 @@
 
 <body>
 
+    <a href="{{ url('/questions/index')}}" >Q&A一覧へ戻る</a>
+
     <h1>詳細</h1>
 
     <p>さん</p>

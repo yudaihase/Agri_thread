@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Question;
+use App\Models\Question; 
+use App\Models\QuestionsCategory;
 use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
@@ -18,9 +19,19 @@ class QuestionController extends Controller
     }
 
 
-    public function create()
+    /* public function create()
     {
         return view('questions.create');
+    } */
+
+
+    public function create()
+    {
+    $question_category = QuestionsCategory::all();
+    dd($question_category);
+    $question_categories = $question_category->getLists()->prepend('選択', '');
+ 
+    return view('questions.create', ['question_categories' => $question_categories]);
     }
 
     
