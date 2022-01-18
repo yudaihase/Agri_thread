@@ -32,7 +32,7 @@
 
         @foreach($questions as $question)
         <div class="question_list">
-            <p>{{ $question->category_id}}</p>
+            <p>{{ $question->category_name}}</p>
             <p><a href="{{ route('answers.show', $question->id) }}" class="question_text">{{ Str::limit($question->post, 45, '...') }}</a></p>
             <p>{{ $question->created_at }}</p>
         </div>

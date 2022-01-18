@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\QuestionsCategory;
 use App\Http\Controllers\Controller;
 
 class AnswerController extends Controller
@@ -31,5 +32,20 @@ class AnswerController extends Controller
 
         return view('questions.detail', ['questions' => $questions , 'answers' => $answers]);//'questions'=indexで読み込む変数の名前を定義
     }
+
+    /* public function index($category_id)
+    {
+        $questions = Question::find($category_id);
+
+        $question_category = new QuestionsCategory;
+
+        foreach($questions as $question){
+            $category_name = $question_category->find($question->category_id);
+            $question['category_name'] = $category_name->category_name;
+        }
+
+        return view('questions.detail', ['questions' => $questions]);
+} */
+
 
 }

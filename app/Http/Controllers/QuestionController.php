@@ -16,8 +16,7 @@ class QuestionController extends Controller
 
         $query = Question::query();
 
-        //カテゴリーを指定している / してしないをif文で分けて
-        /* $category_id = $request->category_id; */
+        //カテゴリーを指定している 
         if (isset($category_id)) {
             $query = where('category_id', $category_id)->latest()->paginate(10);
         } 
@@ -26,9 +25,15 @@ class QuestionController extends Controller
         
         // カテゴリ取得
         $question_category = new QuestionsCategory;
-        $question_categories = $question_category->getLists();
-        /* dd($question_categories);  */
 
+        //一つ一つのカテゴリーIDに対応したカテゴリー名を取り出す　連想配列
+        foreach($questions as $question){
+            $category_name = $question_category->find($question->category_id);
+            $question['category_name'] = $category_name->category_name;
+        }
+
+        $question_categories = $question_category->getLists();
+       
         return view('questions.index', [
             'questions' => $questions, 
             'question_categories' => $question_categories, 
@@ -37,7 +42,7 @@ class QuestionController extends Controller
     
     }
 
-    
+
     public function create()
     {
     $question_category = new QuestionsCategory;
