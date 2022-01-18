@@ -9,26 +9,39 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        
+        $category_id = $request->input('category_id'); //カテゴリの値
 
-        $questions = Question::all();
-        /* dd($questions); */
+        $query = Question::query();
 
-        return view('questions.index', ['questions' => $questions]);//'questions'=indexで読み込む変数の名前を定義
+        //カテゴリーを指定している / してしないをif文で分けて
+        /* $category_id = $request->category_id; */
+        if (isset($category_id)) {
+            $query = where('category_id', $category_id)->latest()->paginate(10);
+        } 
+            
+        $questions = $query->latest()->paginate(10);
+        
+        // カテゴリ取得
+        $question_category = new QuestionsCategory;
+        $question_categories = $question_category->getLists();
+        /* dd($question_categories);  */
+
+        return view('questions.index', [
+            'questions' => $questions, 
+            'question_categories' => $question_categories, 
+            'category_id'=>$category_id
+        ]);
+    
     }
 
-
-    /* public function create()
-    {
-        return view('questions.create');
-    } */
-
-
+    
     public function create()
     {
-    $question_category = QuestionsCategory::all();
-    dd($question_category);
+    $question_category = new QuestionsCategory;
+    /* dd($question_category); */
     $question_categories = $question_category->getLists()->prepend('選択', '');
  
     return view('questions.create', ['question_categories' => $question_categories]);
@@ -49,7 +62,8 @@ class QuestionController extends Controller
         Question::create($inputs);
         
         return redirect()->route('questions.index');
-
-
+        
     }
+
+
 }

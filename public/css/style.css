@@ -1,0 +1,144 @@
+
+/* 質問一覧ページ、質問詳細ページ、投稿ページ */
+.center{
+    text-align:center;
+    margin:0 auto;
+    width: 800px;
+}
+
+/* 質問一覧ページ*/
+.questions1_image {
+    width:100;
+    height:50;
+}
+
+.question_list{
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    
+}
+
+.question_text{
+    font-weight:  bold;
+    text-decoration: none;
+}
+
+/* 質問詳細ページ */
+.detail {
+    margin: 2em 0;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+.detail .detail_title {
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.detail p {
+    padding: 15px 20px;
+    margin: 0;
+}
+
+.detail_back {
+    text-decoration: none;
+}
+
+.answer_list{
+    font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+/* AGRI PLAN 投稿一覧 */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px #8a8888 solid;
+  }
+  
+  table tr{
+    border-bottom: solid 2px white;
+  }
+  
+  table tr:last-child{
+    border-bottom: none;
+  }
+  
+  table th{
+    position: relative;
+    text-align: left;
+    width: 20%;
+    background-color: #52c2d0;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  table th:after{
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top:calc(50% - 10px);
+    right:-10px;
+    border-left: 10px solid #52c2d0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+  
+  table td{
+    text-align: left;
+    width: 40%;
+    text-align: center;
+    background-color: #eee;
+    padding: 10px 0;
+  }
+
+  .td-margin{
+    margin-left:100px;
+   }
+
+  .td-text-align{
+    text-align: left;
+   }
+
+.back_color{
+    background-color: #ffffff
+  }
+
+  .btn-blue,
+a.btn-blue {
+    font-weight:  bold;
+    width: 50%;
+    min-width: 200px;
+    max-width: 600px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #50c2f7;
+}
+
+.detail-btn{
+    font-weight:  bold;
+    width: 50%;
+    min-width: 200px;
+    max-width: 600px;
+    padding: 10px;
+    color: #ffffff;
+    background-color: #7395d4;
+}

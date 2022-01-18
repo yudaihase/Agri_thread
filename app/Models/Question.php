@@ -13,7 +13,7 @@ class Question extends Model
     /* protected $fillable =
     ['user_id','category_id','post','created_at']; */
 
-    protected $fillable = ['post'];
+    protected $fillable = ['category_id','post'];
 
 
     public function answers()
@@ -27,4 +27,3 @@ class Question extends Model
         return $this->belongsTo('App\Models\QuestionsCategory');
     }
 }
-/* 'user_id', 'category_id', */

@@ -86,7 +86,7 @@
 
                 <div class="links">
                     <a href="{{ url('/questions/index') }}">Q&A</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="{{ url('/plans/index') }}">AGRI PLANS</a>
                     
                 </div>
             </div>

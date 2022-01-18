@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('top');
 });
 
+/* Q&A */
 Route::get('/questions/index', "QuestionController@index");
-
 Route::post('/questions/create', "QuestionController@create");
 
 /* Route::resource(‘URL’, ‘コントローラー名’, [‘only’ =>[‘メソッド名’, ‘メソッド名’]]); */
@@ -29,6 +29,24 @@ Route::resource('questions', 'QuestionController',['only'=>[
     ]]);
 
 Route::resource('/questions/answers', 'AnswerController',['only'=>[
+    'index',
+    'create',
+    'store',
+    'show'
+    ]]);
+
+
+/* AGRI PLANS */
+Route::get('/plans/index', "planController@index");
+Route::post('/plans/create', "planController@create");
+
+Route::resource('plans', 'planController',['only'=>[
+    'index',
+    'create',
+    'store',
+    ]]);
+
+Route::resource('/plans/comments', 'PlanCommentController',['only'=>[
     'index',
     'create',
     'store',

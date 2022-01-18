@@ -13,7 +13,7 @@ class CreateQuestionsCategoriesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('questions_categories')) {
+        if (!Schema::hasTable('users')) {
         Schema::create('questions_categories', function (Blueprint $table) {
             $table->Increments('id');
             $table->string('category_name');

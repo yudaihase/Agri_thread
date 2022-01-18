@@ -12,11 +12,6 @@ class AnswerController extends Controller
 
     public function store(Request $request)
     {
-        /* dd($request); */
-        
-/*          $request->validate(
-             ['post' => 'required'], 
-             ['post.required' => 'テキストが未入力です']); */
 
         //投稿を登録
         Answer::create([
@@ -32,7 +27,7 @@ class AnswerController extends Controller
 
         $questions = Question::find($id);// 投稿を取得
         
-        $answers = $questions->answers()->get(); // 投稿が持つ回答を取得
+        $answers = $questions->answers()->latest()->get(); // 投稿が持つ回答を取得
 
         return view('questions.detail', ['questions' => $questions , 'answers' => $answers]);//'questions'=indexで読み込む変数の名前を定義
     }

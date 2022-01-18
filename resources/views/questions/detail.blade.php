@@ -2,39 +2,46 @@
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <title>詳細</title>
+
+    <link rel="stylesheet" href="{{  asset('css/style.css') }}" />
 
 </head>
 
 <body>
+<div class="center">
 
-    <a href="{{ url('/questions/index')}}" >Q&A一覧へ戻る</a>
+    <P>> <a href="{{ url('/')}}" class="detail_back">TOP</a>
+        > <a href="{{ url('/questions/index')}}" class="detail_back">Q&A一覧</a></p>
 
-    <h1>詳細</h1>
 
-    <p>さん</p>
-    <p>{{ $questions->created_at }}</p>
-    <p>{{ $questions->post }}</p>
+    <div class="detail">
+    <div class="detail_title">質問詳細</div>
+        <p>さん</p>
+        <p>{{ $questions->created_at }}</p>
+        <p>{!! nl2br(e( $questions->post )) !!}</p>
+    </div>
 
 
     <form method="POST" action="{{ route('answers.store') }}">
     @csrf
 
         <input type="hidden" name="question_id" value="{{ $questions->id }}">
-        <textarea rows="10" cols="60" name="answer"></textarea>
-        <input type="submit" value="回答する">
+        <textarea rows="10" cols="100" name="answer"></textarea>
+        <br>
+        <input type="submit" value="コメントする">
     </form>
     
     @foreach($answers as $answer)
-    <hr>
-    <p>さん</p>
-    <p>{{ $answer->created_at }}</p>
-    <p>{{ $answer->answer }}</p>
+    <div class="answer_list">
+        <p>さん</p>
+        <p>{{ $answer->created_at }}</p>
+        <p>{!! nl2br(e( $answer->answer )) !!}</p>
+    </div>
     
                             
     @endforeach
 
 
+    </div>
 </body>
 </html>

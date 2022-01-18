@@ -8,10 +8,12 @@ class QuestionsCategory extends Model
 {
     protected $table = 'questions_categories';
 
+    protected $fillable = ['id','category_name'];
+
     
     public function getLists()
     {
-        $questions_categories = QuestionsCategory::orderBy('id','asc')->pluck('category_name', 'id');
+        $questions_categories = QuestionsCategory::pluck('category_name','id');
      
         return $questions_categories;
     }
@@ -22,5 +24,4 @@ class QuestionsCategory extends Model
         return $this->hasMany('App\Models\Question');
     }
 }
-
 
